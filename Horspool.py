@@ -7,7 +7,7 @@ Created on Tue Apr 17 02:44:27 2018
 """
 
 #%%
-
+import time
 table = [0]*256
 rest = []
 sigma = "ACGT"
@@ -24,8 +24,11 @@ def bc1(pat, m):
 			
 	return table	
 
-text = "GCATCGCAGAGAGTATACAGTACG"
-pat = "GCAGAGAG"
+with open('hi', 'r') as myfile:
+	   data=myfile.read().replace('\n', '')
+		   
+#text = data
+#pat = "GCAGAGAG"
 #bc = bc1(pat.upper(), len(pat))
 
 def cmp(pat, text, j, m):
@@ -57,12 +60,17 @@ def horspool(pat, m, text, n):
 	return matches
 
 def main():
-	text = "GCATCGCAGAGAGTATACAGTACG"
-	pat = "GCAGAGAG"
+	text = data
+	pat = "MAMAMAMAMAMAMAMAMAMA"
 	#sigma = "ACGT"
 	
+	t1 = time.time()
+	print ('start')
 	print(horspool(pat, len(pat), text, len(text)))
-
+	t2 = time.time()
+	print ( (t2 - t1) * 1000) 
+	
 if __name__ == '__main__':
 	main()	
+	
 	
